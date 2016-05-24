@@ -273,7 +273,8 @@ public class BinaryArray<T> implements Iterable<T> {
      */
     private class BinaryArrayIterator implements Iterator<T> {
 
-        private int current; // cursor position
+        private int cursor; // cursor cursor position
+        private int current; // current item index;
 
         /**
          * Default constructor.
@@ -301,7 +302,7 @@ public class BinaryArray<T> implements Iterable<T> {
                 throw new IndexOutOfBoundsException();
             }
 
-            current = -1;
+            cursor = -1;
 
             if (start == 0 && length == 0) {
                 return;
@@ -321,7 +322,8 @@ public class BinaryArray<T> implements Iterable<T> {
                 } else if (!exists[mid]) {
                     hi = mid - 1;
                 } else {
-                    current = mid;
+                    cursor = mid;
+                    current = start;
                     break;
                 }
                 mid = lo + (hi - lo) / 2;
@@ -329,7 +331,7 @@ public class BinaryArray<T> implements Iterable<T> {
                 k = mid + offset;
             }
 
-            if (current == -1) {
+            if (cursor == -1) {
                 throw new RuntimeException("Index not found");
             }
         }
@@ -341,7 +343,7 @@ public class BinaryArray<T> implements Iterable<T> {
          */
         @Override
         public boolean hasNext() {
-            return current != -1;
+            return length > 0 && current < length;
         }
 
         /**
@@ -351,21 +353,21 @@ public class BinaryArray<T> implements Iterable<T> {
          */
         @Override
         public T next() {
-            if (current == -1) {
+            if (cursor == -1) {
                 throw new IndexOutOfBoundsException();
             }
 
-            T value = items[current];
+            T value = items[cursor];
 
-            if (current == last) {
-                current = -1;
+            if (current + 1 == length) {
+                cursor = -1;
             } else {
-                current++;
-                while (!exists[current]) {
-                    current++;
+                cursor++;
+                while (!exists[cursor]) {
+                    cursor++;
                 }
             }
-
+            current++;
             return value;
         }
 
