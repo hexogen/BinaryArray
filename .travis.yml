@@ -6,4 +6,6 @@ jdk:
   - oraclejdk8
 
 script:
-  - mvn site
+  - mvn test
+  - mvn checkstyle:checkstyle
+
