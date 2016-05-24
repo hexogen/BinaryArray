@@ -156,6 +156,24 @@ public class BinaryArrayTest {
 
     }
     
+    /**
+     * Test of delete method, of class BinaryArray.
+     */
+    public void testDeleteAllThanAdd() {
+        System.out.println("delete all values");
+        //remove all values
+        for (int i = 0; i < 10; i++) {
+            instance.delete(0);
+        }
+        for (int i = 0; i < 10; i++) {
+            instance.push(i);
+        }
+        
+        for (int i = 0; i < 10; i++) {
+            assertEquals(i, (int) instance.get(i));
+        }
+    }
+    
     @Test(expected = IndexOutOfBoundsException.class)
     public void testDeleteWithLowerBoundException() {
         System.out.println("delete singele value with lowerbound exception");

@@ -164,6 +164,9 @@ public class BinaryArray<T> implements Iterable<T> {
                     int left = lo + (mid - lo - 1) / 2;
                     offsets[left]++;
                 }
+                if (length < size / 4) {
+                    resize(length - 1);
+                }
                 return;
             }
             mid = lo + (hi - lo) / 2;
