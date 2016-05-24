@@ -12,7 +12,8 @@ Binary array data structure.
 |----------------------------|--------------------|-----------|---------------|--------------|
 | Get at index               |        Θ(n)        |	   Θ(1)   | 	Θ(1)	  |   Θ(log n)   |
 | Insert/delete at beginning |	      Θ(1)        |    N/A	  |     Θ(n)	  |   Θ(log n)   |
-| Insert/delete at end	     |        Θ(1)        |    N/A	  |     Θ(1)      |   Θ(log n)   |
+| Insert at end              |        Θ(1)        |    N/A	  |     Θ(1)      |   Θ(1)       |
+| Delete at end	             |        Θ(1)        |    N/A	  |     Θ(1)      |   Θ(log n)   |
 | Insert/delete in middle	 | search time + Θ(1) |	   N/A    | 	Θ(n)	  |   Θ(log n)   |
 | Wasted space (average)	 |        Θ(n)        | 	0     |     Θ(n)      |   Θ(n)       |
 

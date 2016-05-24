@@ -156,6 +156,7 @@ public class BinaryArray<T> implements Iterable<T> {
             } else {
                 exists[mid] = false;
                 items[mid] = null;
+                length--;
                 if (!deleted) {
                     offsets[mid]--;
                 }

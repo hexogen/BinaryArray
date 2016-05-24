@@ -130,6 +130,32 @@ public class BinaryArrayTest {
         assertEquals(expResult, result);
     }
     
+    /**
+     * Test of delete method, of class BinaryArray.
+     */
+    @Test(expected = IndexOutOfBoundsException.class)
+    public void testDeleteAll() {
+        System.out.println("delete all values");
+        try {
+            //remove all values
+            instance.delete(3);
+            instance.delete(2);
+            instance.delete(0);
+            instance.delete(2);
+            instance.delete(0);
+            instance.delete(2);
+            instance.delete(2);
+            instance.delete(1);
+            instance.delete(1);
+            instance.delete(0);
+        } catch (Error e) {
+            fail();
+        }
+        
+        instance.get(0);
+
+    }
+    
     @Test(expected = IndexOutOfBoundsException.class)
     public void testDeleteWithLowerBoundException() {
         System.out.println("delete singele value with lowerbound exception");
