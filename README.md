@@ -3,7 +3,8 @@ Binary array data structure
 
 [![Build Status](https://travis-ci.org/hexogen/binaryArray.svg?branch=master)](https://travis-ci.org/hexogen/binaryArray)
 
-Binary array data structure. 
+## API
+
 
 
 ## Data structure features

@@ -153,6 +153,12 @@ public class BinaryArray<T> implements Iterable<T> {
                     deleted = false;
                 }
                 lo = mid + 1;
+            } else if(!exists[mid]) {
+                if (!deleted) {
+                    offsets[mid]--;
+                    deleted = true;
+                }
+                hi = mid - 1;
             } else {
                 exists[mid] = false;
                 items[mid] = null;
@@ -164,7 +170,7 @@ public class BinaryArray<T> implements Iterable<T> {
                     int left = lo + (mid - lo - 1) / 2;
                     offsets[left]++;
                 }
-                if (length < size / 4) {
+                if (length <= size / 4) {
                     resize(length - 1);
                 }
                 return;
@@ -233,7 +239,7 @@ public class BinaryArray<T> implements Iterable<T> {
      */
     private void resize(int index) {
         int pow = (int) Math.round(Math.log(index) / Math.log(2));
-
+        pow++;
         if (Math.pow(2, pow) <= index) {
             pow++;
         }
@@ -244,17 +250,17 @@ public class BinaryArray<T> implements Iterable<T> {
         int[] newOffset = new int[newSize];
         T[] newItems = (T[]) new Object[newSize];
 
+        for (int i = 0; i < newSize; i++) {
+            newOffset[i] = 0;
+            newExists[i] = false;
+        }
+        
         for (int i = 0, j = 0; i <= last; i++) {
             if (exists[i]) {
                 newExists[j] = true;
                 newItems[j++] = items[i];
             }
         }
-
-        for (int i = 0; i < newSize; i++) {
-            newOffset[i] = 0;
-        }
-
         size = newSize;
         exists = newExists;
         offsets = newOffset;

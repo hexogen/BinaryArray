@@ -159,6 +159,7 @@ public class BinaryArrayTest {
     /**
      * Test of delete method, of class BinaryArray.
      */
+    @Test
     public void testDeleteAllThanAdd() {
         System.out.println("delete all values");
         //remove all values
@@ -171,6 +172,19 @@ public class BinaryArrayTest {
         
         for (int i = 0; i < 10; i++) {
             assertEquals(i, (int) instance.get(i));
+        }
+    }
+    
+    /**
+     * Test of delete method, of class BinaryArray.
+     */
+    @Test
+    public void testDeleteLast() {
+        System.out.println("delete all values from tail");
+        //remove all values
+        for (int i = 9; i >= 0; i--) {
+            assertEquals(i, (int) instance.get(i));
+            instance.delete(i);
         }
     }
     
