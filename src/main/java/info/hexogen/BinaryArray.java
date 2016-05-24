@@ -153,7 +153,7 @@ public class BinaryArray<T> implements Iterable<T> {
                     deleted = false;
                 }
                 lo = mid + 1;
-            } else if(!exists[mid]) {
+            } else if (!exists[mid]) {
                 if (!deleted) {
                     offsets[mid]--;
                     deleted = true;
