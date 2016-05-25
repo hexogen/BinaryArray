@@ -6,8 +6,25 @@ Binary array data structure
 
 ## About
 
-Current data structure allows to delete element with given index and to keep track array like all elements where shifted(to eliminate empty space).
+Current data structure allows to delete element with given index and to keep track array like all elements where shifted(to eliminate empty space) with logarithmic time.
 
+## Example
+
+```java
+BinaryArray<Integer> arr = new BinaryArray<>();
+for (int i = 0; i < 10; i++) {
+    arr.push(i);
+}
+// 0 1 2 3 4 5 6 7 8 9
+
+arr.delete(1);
+// 0 2 3 4 5 6 7 8 9
+
+arr.get(0); // 0
+arr.get(1); // 2
+arr.get(8); // 9
+
+```
 
 ## API
 
