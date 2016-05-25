@@ -3,6 +3,12 @@ Binary array data structure
 
 [![Build Status](https://travis-ci.org/hexogen/binaryArray.svg?branch=master)](https://travis-ci.org/hexogen/binaryArray)
 
+
+## About
+
+Current data structure allows to delete element with given index and to keep track array like all elements where shifted(to eliminate empty space).
+
+
 ## API
 
 * __BinaryArray:get(int index)__  : Get item with the given index position.
