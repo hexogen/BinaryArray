@@ -47,6 +47,15 @@ public class BinaryArray<T> implements Iterable<T> {
             offsets[i] = 0;
         }
     }
+    
+    /**
+     * Get array length
+     * 
+     * @return number of items in array 
+     */
+    public int lenght() {
+        return length;
+    }
 
     /**
      * Get item with the given index position.

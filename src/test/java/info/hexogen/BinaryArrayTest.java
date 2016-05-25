@@ -189,6 +189,20 @@ public class BinaryArrayTest {
         }
     }
     
+    /**
+     * Test of length method, of class BinaryArray.
+     */
+    @Test
+    public void testLenght() {
+        System.out.println("delete all values from tail");
+        //remove all values
+        for (int i = 10; i > 0; i--) {
+            assertEquals(i, (int) instance.lenght());
+            instance.delete(i-1);
+        }
+        assertEquals(0, (int) instance.lenght());
+    }
+    
     @Test(expected = IndexOutOfBoundsException.class)
     public void testDeleteWithLowerBoundException() {
         System.out.println("delete singele value with lowerbound exception");

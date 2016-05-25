@@ -9,6 +9,7 @@ Binary array data structure
 * __BinaryArray:set(int index, T value)__  : Set a value to cell with the given index position.
 * __BinaryArray:push(T value)__  : Push value to the end of array.
 * __BinaryArray:delete(int index)__  : Delete item with the given relative position.
+* __BinaryArray:length()__  : Get array lengt.
 * __BinaryArray:iterator()__  : Get new iterator with zero start position.
 * __BinaryArray:iterator(int start)__  : Get new iterator with the given start position
 
