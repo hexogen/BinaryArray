@@ -126,19 +126,13 @@ public class BinaryArray<T> implements Iterable<T> {
         boolean deleted = false;
 
         while (lo <= hi) {
-            if (index < k) {
-                if (!deleted) {
-                    offsets[mid]--;
-                    deleted = true;
-                }
-                hi = mid - 1;
-            } else if (index > k) {
+            if (index > k) {
                 if (deleted) {
                     offsets[mid]++;
                     deleted = false;
                 }
                 lo = mid + 1;
-            } else if (!exists[mid]) {
+            } else if (index < k || !exists[mid]) {
                 if (!deleted) {
                     offsets[mid]--;
                     deleted = true;
@@ -214,11 +208,9 @@ public class BinaryArray<T> implements Iterable<T> {
         int k = mid + offset;
 
         while (lo <= hi) {
-            if (k > index) {
-                hi = mid - 1;
-            } else if (k < index) {
+            if (k < index) {
                 lo = mid + 1;
-            } else if (!exists[mid]) {
+            } else if (k > index || !exists[mid]) {
                 hi = mid - 1;
             } else {
                 return mid;
@@ -314,11 +306,9 @@ public class BinaryArray<T> implements Iterable<T> {
             int k = mid + offset;
 
             while (lo <= hi) {
-                if (k > start) {
-                    hi = mid - 1;
-                } else if (k < start) {
+                if (k < start) {
                     lo = mid + 1;
-                } else if (!exists[mid]) {
+                } else if (k > start || !exists[mid]) {
                     hi = mid - 1;
                 } else {
                     cursor = mid;
