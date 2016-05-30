@@ -1,6 +1,7 @@
 package info.hexogen;
 
 import java.util.Iterator;
+import java.util.NoSuchElementException;
 
 /**
  * Binary array data structure.
@@ -346,7 +347,7 @@ public class BinaryArray<T> implements Iterable<T> {
         @Override
         public T next() {
             if (cursor == -1) {
-                throw new IndexOutOfBoundsException();
+                throw new NoSuchElementException();
             }
 
             T value = items[cursor];

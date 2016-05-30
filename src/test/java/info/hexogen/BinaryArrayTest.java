@@ -1,7 +1,7 @@
 package info.hexogen;
 
 import java.util.Iterator;
-import java.util.Random;
+import java.util.NoSuchElementException;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -230,7 +230,7 @@ public class BinaryArrayTest {
         assertFalse(iterator.hasNext());
     }
 
-    @Test(expected = IndexOutOfBoundsException.class)
+    @Test(expected = NoSuchElementException.class)
     public void testIteratorWithException() {
         System.out.println("iterator out of bound exception");
         
