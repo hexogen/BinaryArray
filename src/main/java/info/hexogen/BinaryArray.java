@@ -196,6 +196,12 @@ public class BinaryArray<T> implements Iterable<T> {
         exists[last] = true;
     }
     
+    /**
+     * Get internal array index
+     * 
+     * @param index external index
+     * @return internal item position
+     */
     private int getInternalIndex(int index) {
         if (index < 0 || index >= length) {
             throw new IndexOutOfBoundsException();
