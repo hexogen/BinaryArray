@@ -64,32 +64,7 @@ public class BinaryArray<T> implements Iterable<T> {
      * @return 
      */
     public T get(int index) {
-        if (index < 0 || index >= length) {
-            throw new IndexOutOfBoundsException();
-        }
-
-        int lo = 0;
-        int hi = size - 1;
-        int mid = lo + (hi - lo) / 2;
-        int offset = offsets[mid];
-        int k = mid + offset;
-
-        while (lo <= hi) {
-            if (k > index) {
-                hi = mid - 1;
-            } else if (k < index) {
-                lo = mid + 1;
-            } else if (!exists[mid]) {
-                hi = mid - 1;
-            } else {
-                return items[mid];
-            }
-            mid = lo + (hi - lo) / 2;
-            offset += offsets[mid];
-            k = mid + offset;
-        }
-
-        throw new RuntimeException("Index not found");
+        return items[getInternalIndex(index)];
     }
 
     /**
@@ -199,28 +174,7 @@ public class BinaryArray<T> implements Iterable<T> {
      * @param value 
      */
     private void update(int index, T value) {
-        int hi = 0;
-        int lo = length - 1;
-        int mid = lo + (hi - lo) / 2;
-        int offset = offsets[mid];
-        int k = mid + offset;
-
-        while (lo <= hi && (k != index || !exists[mid])) {
-            if (k < index) {
-                hi = mid - 1;
-            } else if (k > index) {
-                lo = mid + 1;
-            } else if (!exists[mid]) {
-                hi = mid - 1;
-            } else {
-                items[mid] = value;
-                return;
-            }
-            mid = lo + (hi - lo) / 2;
-            k += offsets[mid];
-        }
-
-        throw new RuntimeException("Index not found");
+        items[getInternalIndex(index)] = value;
     }
 
     /**
@@ -239,6 +193,35 @@ public class BinaryArray<T> implements Iterable<T> {
         last = index;
         items[last] = value;
         exists[last] = true;
+    }
+    
+    private int getInternalIndex(int index) {
+        if (index < 0 || index >= length) {
+            throw new IndexOutOfBoundsException();
+        }
+
+        int lo = 0;
+        int hi = size - 1;
+        int mid = lo + (hi - lo) / 2;
+        int offset = offsets[mid];
+        int k = mid + offset;
+
+        while (lo <= hi) {
+            if (k > index) {
+                hi = mid - 1;
+            } else if (k < index) {
+                lo = mid + 1;
+            } else if (!exists[mid]) {
+                hi = mid - 1;
+            } else {
+                return mid;
+            }
+            mid = lo + (hi - lo) / 2;
+            offset += offsets[mid];
+            k = mid + offset;
+        }
+
+        throw new RuntimeException("Index not found");
     }
 
     /**
@@ -379,7 +362,6 @@ public class BinaryArray<T> implements Iterable<T> {
             current++;
             return value;
         }
-
     }
 
     /**
