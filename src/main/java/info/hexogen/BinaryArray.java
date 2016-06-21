@@ -34,6 +34,7 @@ public class BinaryArray<T> implements Iterable<T> {
 
     /**
      * Initialize binary array data structure with given buffer size.
+     * 
      * @param initSize of array buffer
      */
     private void init(final int initSize) {
@@ -52,7 +53,7 @@ public class BinaryArray<T> implements Iterable<T> {
     /**
      * Get array length
      * 
-     * @return number of items in array 
+     * @return number of items in array
      */
     public int lenght() {
         return length;
@@ -191,7 +192,7 @@ public class BinaryArray<T> implements Iterable<T> {
     }
     
     /**
-     * Get internal array index
+     * Get internal array index.
      * 
      * @param index external index
      * @return internal item position
@@ -299,30 +300,8 @@ public class BinaryArray<T> implements Iterable<T> {
                 return;
             }
 
-            int lo = 0;
-            int hi = size - 1;
-            int mid = lo + (hi - lo) / 2;
-            int offset = offsets[mid];
-            int k = mid + offset;
-
-            while (lo <= hi) {
-                if (k < start) {
-                    lo = mid + 1;
-                } else if (k > start || !exists[mid]) {
-                    hi = mid - 1;
-                } else {
-                    cursor = mid;
-                    current = start;
-                    break;
-                }
-                mid = lo + (hi - lo) / 2;
-                offset += offsets[mid];
-                k = mid + offset;
-            }
-
-            if (cursor == -1) {
-                throw new RuntimeException("Index not found");
-            }
+            current = getInternalIndex(start);
+            cursor = start;
         }
 
         /**
@@ -372,7 +351,7 @@ public class BinaryArray<T> implements Iterable<T> {
     }
 
     /**
-     * Get new iterator with the given start position
+     * Get new iterator with the given start position.
      * 
      * @param start
      * @return 
