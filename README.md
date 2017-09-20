@@ -1,7 +1,7 @@
 # Binary Array
 Binary array data structure
 
-[![Build Status](https://travis-ci.org/hexogen/BinaryArray.svg?branch=master)](https://travis-ci.org/hexogen/binaryArray)
+[![Build Status](https://travis-ci.org/hexogen/BinaryArray.svg?branch=master)](https://travis-ci.org/hexogen/BinaryArray)
 
 
 ## About
