@@ -21,8 +21,7 @@
     </dependencies>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <maven.compiler.source>1.8</maven.compiler.source>
-        <maven.compiler.target>1.8</maven.compiler.target>
+        <maven.compiler.release>22</maven.compiler.release>
         <checkstyle.config.location>checkstyle.xml</checkstyle.config.location>
     </properties>
     <reporting>
