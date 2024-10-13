@@ -1,0 +1,46 @@
+name: Java Maven CI
+
+# Controls when the action will run
+on:
+  push:
+    branches: ['*']
+    tags: ['v*']
+  pull_request:
+    branches: ['*']
+
+# Define the jobs to run
+jobs:
+  build:
+
+    # The operating system to run on
+    runs-on: ubuntu-latest
+
+    # Steps define a sequence of tasks to be performed
+    steps:
+      # Checkout the repository
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      # Set up JDK 11 (or any other version you need)
+      - name: Set up JDK 11
+        uses: actions/setup-java@v3
+        with:
+          distribution: 'temurin'  # Can also be 'zulu' or others
+          java-version: '11'
+
+      # Cache Maven dependencies to speed up the build
+      - name: Cache Maven packages
+        uses: actions/cache@v3
+        with:
+          path: ~/.m2/repository
+          key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
+          restore-keys: |
+            ${{ runner.os }}-maven-
+
+      # Build and test the project
+      - name: Build with Maven
+        run: mvn clean install --batch-mode
+
+      # Optionally, you can run specific tests or custom scripts
+      - name: Run tests
+        run: mvn test --batch-mode
