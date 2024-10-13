@@ -44,3 +44,13 @@ jobs:
       # Optionally, you can run specific tests or custom scripts
       - name: Run tests
         run: mvn test --batch-mode
+          
+      # Upload coverage to Codecov
+      - name: Upload coverage to Codecov
+        uses: codecov/codecov-action@v3
+        with:
+          files: ./target/site/jacoco/jacoco.xml  # Path to the generated Jacoco report
+          flags: unittests  # Optional, you can tag the type of tests
+          fail_ci_if_error: true  # Fail the job if Codecov fails
+          token: ${{ secrets.CODECOV_TOKEN }}  # Codecov token for private repos, not required for public repos
+
