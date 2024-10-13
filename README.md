@@ -1,8 +1,7 @@
 # Binary Array
 Binary array data structure
 
-![build](https://github.com/hexogen/BinaryArray/actions/workflows/tests.yml/badge.svg?branch=master)
-
+![build](https://github.com/hexogen/BinaryArray/actions/workflows/tests.yml/badge.svg?branch=master) [![codecov](https://codecov.io/gh/hexogen/BinaryArray/graph/badge.svg?token=MPKBN9J02W)](https://codecov.io/gh/hexogen/BinaryArray)
 
 ## About
 
