@@ -1,4 +1,4 @@
-name: Java Maven CI
+name: Tests
 
 # Controls when the action will run
 on:
